@@ -2,7 +2,9 @@ NAME = PmergeMe
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+
+CXXFLAGS_DEBUG = -Wall -Wextra -Werror -std=c++98 -g -DDEBUG
 
 PATH_SRCS = ./sources/
 PATH_INCS = ./includes/
@@ -35,4 +37,7 @@ run:
 	@make --silent
 	@./$(NAME)
 
-.PHONY: all clean fclean re run
+db: CXXFLAGS = $(CXXFLAGS_DEBUG)
+db: re
+
+.PHONY: all clean fclean re run db

@@ -46,10 +46,9 @@ bool validInput(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         if (!validateArgument(argv[i], val)) 
             return (false);
-        }
-        std::cout << val << std::endl;
+        DEBUG_PRINT("Value: " << val);
     }
-    std::cout << "Input is valid." << std::endl;
+    DEBUG_PRINT("Input is valid!");
     return (true);
 }
 
