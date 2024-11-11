@@ -27,17 +27,24 @@ static bool couldConvertNumber(char *currNumber, long &val) {
     return (true);
 }
 
+bool validateArgument(char *arg, long &val) {
+    if (!couldConvertNumber(arg, val)) {
+        std::cerr << "Error: Invalid number '" << arg << "'." << std::endl;
+        return false;
+    }
+    if (val < 0) {
+        std::cerr << "Error: Negative numbers are not allowed." << std::endl;
+        return false;
+    }
+    return true;
+}
+
 bool validInput(int argc, char **argv) {
     long val = 0;
     if (!sufficientArgs(argc))
         return (false);
     for (int i = 1; i < argc; i++) {
-        if (!couldConvertNumber(argv[i], val)) {
-            std::cerr << "Error: Invalid number '" << argv[i] << "'." << std::endl;
-            return (false);
-        }
-        if (val < 0) {
-            std::cerr << "Error: Negative numbers are not allowed." << std::endl;
+        if (!validateArgument(argv[i], val)) 
             return (false);
         }
         std::cout << val << std::endl;
