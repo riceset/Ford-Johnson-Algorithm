@@ -48,7 +48,7 @@ bool validInput(int argc, char **argv) {
             return (false);
         DEBUG_PRINT("Value: " << val);
     }
-    DEBUG_PRINT("Input is valid!");
+    DEBUG_PRINT(GREEN << "Input is valid!" << RESET);
     return (true);
 }
 

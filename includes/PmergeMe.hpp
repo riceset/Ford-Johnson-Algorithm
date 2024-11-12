@@ -7,6 +7,7 @@
 #include <climits>
 #include <string>
 #include <sstream>
+#include "colors.hpp"
 
 #define DECIMAL (10)
 
