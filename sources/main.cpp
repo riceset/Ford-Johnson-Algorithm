@@ -5,6 +5,7 @@ int main(int argc, char **argv) {
 
     if (!validInput(argc, argv))
         return (EXIT_FAILURE);
-    // insertIntoList(argc, argv, numbers);
+    insertIntoList(argc, argv, numbers);
+    printList(numbers);
     return (EXIT_SUCCESS);
 }

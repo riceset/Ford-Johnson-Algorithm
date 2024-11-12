@@ -30,13 +30,13 @@ static bool couldConvertNumber(char *currNumber, long &val) {
 bool validateArgument(char *arg, long &val) {
     if (!couldConvertNumber(arg, val)) {
         std::cerr << "Error: Invalid number '" << arg << "'." << std::endl;
-        return false;
+        return (false);
     }
     if (val < 0) {
         std::cerr << "Error: Negative numbers are not allowed." << std::endl;
-        return false;
+        return (false);
     }
-    return true;
+    return (true);
 }
 
 bool validInput(int argc, char **argv) {
@@ -52,4 +52,18 @@ bool validInput(int argc, char **argv) {
     return (true);
 }
 
-// void insertIntoList(int argc, char **argv, std::list<int> numbers) {}
+void insertIntoList(int argc, char **argv, std::list<int> &numbers) {
+    for (int i = 1, num = 0; i < argc; i++) {
+        std::stringstream ss(argv[i]);
+        ss >> num;
+        numbers.push_back(num);
+    }
+}
+
+void printList(std::list<int> numbers) {
+    std::list<int>::const_iterator it;
+
+    for (it = numbers.begin(); it != numbers.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}

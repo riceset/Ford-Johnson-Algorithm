@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <climits>
+#include <string>
+#include <sstream>
 
 #define DECIMAL (10)
 
@@ -15,5 +17,7 @@
 #endif
 
 bool validInput(int argc, char **argv);
+void insertIntoList(int argc, char **argv, std::list<int> &numbers);
+void printList(std::list<int> numbers);
 
 #endif
