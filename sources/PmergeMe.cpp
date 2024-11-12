@@ -63,6 +63,7 @@ void insertIntoList(int argc, char **argv, std::list<int> &numbers) {
 void printList(std::list<int> numbers) {
     std::list<int>::const_iterator it;
 
+    std::cout << "LIST: ";
     for (it = numbers.begin(); it != numbers.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
