@@ -69,9 +69,22 @@ void printList(std::list<int> numbers) {
     std::cout << std::endl;
 }
 
-std::list<std::pair<int, int>> groupListIntoPairs(const std::list<int>& numbers, int& struggler) {
-    std::list<std::pair<int, int>> pairs;
-    std::list::const_iterator it = numbers.begin();
+void printPairs(const std::list<std::pair<int, int> > &pairs, int struggler) {
+    for (std::list<std::pair<int, int> >::const_iterator it = pairs.begin(); it != pairs.end(); ++it) {
+        std::cout << "(" << it->first << ", " << it->second << ")";
+    }
+    std::cout << std::endl;
+    if (struggler == NO_STRUGGLER) {
+        DEBUG_PRINT(MAGENTA << "NO STRUGGLER" << RESET);
+    } else {
+        DEBUG_PRINT(CYAN << "STRUGGLER: " << struggler << RESET);
+    }
+    std::cout << std::endl;
+}
+
+std::list<std::pair<int, int> > groupListIntoPairs(const std::list<int>& numbers, int& struggler) {
+    std::list<std::pair<int, int> > pairs;
+    std::list<int>::const_iterator it = numbers.begin();
     struggler = NO_STRUGGLER;
     while (it != numbers.end()) {
         int first = *it++;
