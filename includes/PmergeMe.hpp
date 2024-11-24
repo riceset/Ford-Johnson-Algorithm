@@ -10,6 +10,7 @@
 #include "colors.hpp"
 
 #define DECIMAL (10)
+#define NO_STRUGGLER (-1)
 
 #ifdef DEBUG
 #define DEBUG_PRINT(...) (std::cout << __VA_ARGS__ << std::endl)
