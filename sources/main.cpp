@@ -2,6 +2,7 @@
 
 int main(int argc, char **argv) {
     std::list<int> numbers;
+    std::list<int> sorted;
 
     std::list<std::pair<int, int> > pairs;
     int struggler;
@@ -10,9 +11,13 @@ int main(int argc, char **argv) {
         return (EXIT_FAILURE);
     insertIntoList(argc, argv, numbers);
     pairs = groupListIntoPairs(numbers, struggler);
+    sorted = fordJohnson(pairs);
+    if (struggler != NO_STRUGGLER)
+        sorted.push_back(struggler);
 #ifdef DEBUG
-    // printList(numbers);
-    printPairs(pairs, struggler);
+    printList(numbers);
+    printList(sorted);
+    // printPairs(pairs, struggler);
 #endif
     return (EXIT_SUCCESS);
 }

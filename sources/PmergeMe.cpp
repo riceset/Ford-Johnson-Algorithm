@@ -90,10 +90,55 @@ std::list<std::pair<int, int> > groupListIntoPairs(const std::list<int>& numbers
         int first = *it++;
         if (it != numbers.end()) {
             int second = *it++;
+            if (first > second)
+                std::swap(first, second);
             pairs.push_back(std::make_pair(first, second));
         } else {
             struggler = first;
         }
     }
     return (pairs);
+}
+
+std::list<int> handleBaseCase(std::list<std::pair<int, int> > &pairs) {
+    std::list<int> sortedList;
+    if (!pairs.empty()) {
+        sortedList.push_back(pairs.front().first);
+        sortedList.push_back(pairs.front().second);
+    }
+    return (sortedList);
+}
+
+void splitPairs(const std::list<std::pair<int, int> > &pairs, std::list<std::pair<int, int> > &leftPairs, std::list<std::pair<int, int> > &rightPairs) {
+    std::list<std::pair<int, int> >::const_iterator it = pairs.begin();
+    std::advance(it, pairs.size() / 2);
+    leftPairs.insert(leftPairs.begin(), pairs.begin(), it);
+    rightPairs.insert(rightPairs.begin(), it, pairs.end());
+}
+
+std::list<int> mergeSort(const std::list<int> &left, const std::list<int> &right) {
+    std::list<int> merged;
+    std::list<int>::const_iterator itLeft = left.begin();
+    std::list<int>::const_iterator itRight = right.begin();
+    while (itLeft != left.end() && itRight != right.end()) {
+        if (*itLeft < *itRight)
+            merged.push_back(*itLeft++);
+        else
+            merged.push_back(*itRight++);
+    }
+    while (itLeft != left.end())
+        merged.push_back(*itLeft++);
+    while (itRight != right.end())
+        merged.push_back(*itRight++);
+    return (merged);
+}
+
+std::list<int> fordJohnson(std::list<std::pair<int, int> > &pairs) {
+    if (pairs.size() <= 1)
+        return (handleBaseCase(pairs));
+    std::list<std::pair<int, int> > leftPairs, rightPairs;
+    splitPairs(pairs, leftPairs, rightPairs);
+    std::list<int> leftSorted = fordJohnson(leftPairs);
+    std::list<int> rightSorted = fordJohnson(rightPairs);
+    return (mergeSort(leftSorted, rightSorted));
 }
