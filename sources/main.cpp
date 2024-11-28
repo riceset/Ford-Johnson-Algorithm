@@ -12,8 +12,8 @@ int main(int argc, char **argv) {
     insertIntoList(argc, argv, numbers);
     pairs = groupListIntoPairs(numbers, struggler);
     sorted = fordJohnson(pairs);
-    if (struggler != NO_STRUGGLER)
-        sorted.push_back(struggler);
+    // if (struggler != NO_STRUGGLER)
+    //     sorted.push_back(struggler);
 #ifdef DEBUG
     printList(numbers);
     printList(sorted);
